@@ -3,7 +3,7 @@ import {createElement} from "../utils";
 const createNotasksTemplate = () => {
   return (
     `<p class="board__no-tasks">
-      Click «ADD NEW TASK» in menu to create your first task
+      Click «ADD NEW TASK» in menu to create your first task1
     </p>`
   );
 };
