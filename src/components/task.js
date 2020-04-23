@@ -1,5 +1,6 @@
+import AbstractComponent from "./abstract-component.js";
 import {MONTH_NAMES} from "../const.js";
-import {createElement, formatTime} from "../utils.js";
+import {formatTime} from "../utils/common";
 
 // Функцию для генерации HTML-разметки можно превратить в метод класса,
 // однако делать мы этого не будем, потому что это не критично,
@@ -65,21 +66,16 @@ const createTaskTemplate = (task) => {
     </div>
   </article>`;
 };
-export default class Task {
+export default class Task extends AbstractComponent{
   constructor(task) {
+    super();
     this._task = task;
-    this._element = null;
   }
   getTemplate() {
     return createTaskTemplate(this._task);
   }
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-    return this._element;
-  }
-  removeElement() {
-    this._element = null;
+  setEditButtonClickHandler(handler) {
+    this.getElement().querySelector(`.card__btn--edit`)
+      .addEventListener(`click`, handler);
   }
 }
