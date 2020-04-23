@@ -6,7 +6,7 @@ import TaskEditComponent from "../components/task-edit.js";
 import TasksComponent from "../components/tasks.js";
 import {render, remove, replace, RenderPosition} from "../utils/render.js";
 
-
+//1
 const SHOWING_TASKS_COUNT_ON_START = 8;
 const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
 
