@@ -5,7 +5,7 @@ import TaskController from "./task";
 import TasksComponent from "../components/tasks.js";
 import {render, remove, RenderPosition} from "../utils/render.js";
 
-//1
+// 1
 const SHOWING_TASKS_COUNT_ON_START = 8;
 const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
 
@@ -53,11 +53,11 @@ export default class BoardController {
 
     this._onDataChange = this._onDataChange.bind(this);
 
-    //Чтоб внутри обработчика зис ссылался на наш класс доски
-    /////// Протестить
-    ///////////////////
-    //Связываем метод класа боард с зис класса. Т.к. метод будем навешивать через эвенет листенер.
-    //А в эвент листенере, этот метод потеряется. Т.к. зис станет источник эвента.
+    // Чтоб внутри обработчика зис ссылался на наш класс доски
+    // ///// Протестить
+    // /////////////////
+    // Связываем метод класа боард с зис класса. Т.к. метод будем навешивать через эвенет листенер.
+    // А в эвент листенере, этот метод потеряется. Т.к. зис станет источник эвента.
     this._onSortTypeChange = this._onSortTypeChange.bind(this);
     // Когда закрываем одну карточку, то закрываем остальные
     // Этот метод будет вызываться из контролера таска.
@@ -120,7 +120,7 @@ export default class BoardController {
         remove(this._loadMoreButtonComponent);
       }
     });
-  };
+  }
 
   _onDataChange(taskController, oldData, newData) {
     const index = this._tasks.findIndex((it) => it === oldData);
@@ -130,13 +130,13 @@ export default class BoardController {
     }
 
     this._tasks = [].concat(this._tasks.slice(0, index), newData, this._tasks.slice(index + 1));
-    console.log(this._tasks[1].isArchive);
+    // console.log(this._tasks[1].isArchive);
     taskController.render(this._tasks[index]);
   }
-_onViewChange() {
-    console.log(this);
+  _onViewChange() {
+    // console.log(this);
     this._showedTaskControllers.forEach((it) => it.setDefaultView());
-}
+  }
   _onSortTypeChange(sortType) {
     this._showingTasksCount = SHOWING_TASKS_COUNT_BY_BUTTON;
 

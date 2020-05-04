@@ -18,7 +18,7 @@ const createTaskTemplate = (task) => {
   // Обратите внимание, что всю работу мы производим заранее.
   // Внутри шаблонной строки мы не производим никаких вычислений,
   // потому что внутри большой разметки сложно искать какой-либо код
-  const {description, dueDate, color, repeatingDays, isArchive, isFavorite} = task;
+  const {description, dueDate, color, repeatingDays} = task;
 
   const isExpired = dueDate instanceof Date && dueDate < Date.now();
   const isDateShowing = !!dueDate;

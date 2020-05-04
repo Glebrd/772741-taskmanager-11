@@ -5,7 +5,7 @@ import {render, replace, RenderPosition} from "../utils/render";
 const Mode = {
   DEFAULT: `default`,
   EDIT: `edit`,
-}
+};
 
 
 export default class TaskController {
@@ -17,7 +17,7 @@ export default class TaskController {
 
     this._taskComponent = null;
     this._taskEditComponent = null;
-/////// Протестить
+    // ///// Протестить
     this._onEscKeyDown = this._onEscKeyDown.bind(this);
   }
 
@@ -69,7 +69,7 @@ export default class TaskController {
     this._taskEditComponent.reset();
     replace(this._taskComponent, this._taskEditComponent);
     this._mode = Mode.DEFAULT;
-  };
+  }
 
   _replaceTaskToEdit() {
     this._onViewChange();
