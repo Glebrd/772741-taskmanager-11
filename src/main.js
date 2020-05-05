@@ -7,7 +7,7 @@ import {render, RenderPosition} from "./utils/render";
 import BoardController from "./controllers/board";
 
 
-const TASK_COUNT = 2;
+const TASK_COUNT = 22;
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
