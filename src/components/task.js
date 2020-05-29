@@ -80,6 +80,11 @@ export default class Task extends AbstractComponent {
     return createTaskTemplate(this._task);
   }
 
+  // интерфейсы компонента, которые позволяют добавить добавить эвент листенер.
+  // Эти элементы будут использвоаться из контроллера
+  // Т.е в компоненте нет логики,только интерфейс.
+  // Т.е. в нашем компоненте (view) есть метод в интерфейсе, который позволяет добавить обработчик
+  // но логика обработчика (сам хендлер) будет описан в контролере таска
   setEditButtonClickHandler(handler) {
     this.getElement().querySelector(`.card__btn--edit`)
       .addEventListener(`click`, handler);

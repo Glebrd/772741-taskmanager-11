@@ -61,7 +61,6 @@ const createTaskEditTemplate = (task, options = {}) => {
   const isExpired = dueDate instanceof Date && dueDate < Date.now();
   const isBlockSaveButton = (isDateShowing && isRepeatingTask) ||
     (isRepeatingTask && !isRepeating(activeRepeatingDays));
-
   const date = (isDateShowing && dueDate) ? formatDate(dueDate) : ``;
   const time = (isDateShowing && dueDate) ? formatTime(dueDate) : ``;
 
@@ -133,7 +132,7 @@ const createTaskEditTemplate = (task, options = {}) => {
           </div>
 
           <div class="card__status-btns">
-            <button class="card__save" type="submit" ${isBlockSaveButton ? `disable` : ``}>save</button>
+            <button class="card__save" type="submit" ${isBlockSaveButton ? `disabled` : ``}>save</button>
             <button class="card__delete" type="button">delete</button>
           </div>
         </div>
@@ -143,6 +142,13 @@ const createTaskEditTemplate = (task, options = {}) => {
 };
 
 export default class TaskEdit extends AbstractSmartComponent {
+  // Умный асбтрактный компонент, умеет сам себя обновлять (перерисовывать), в ответ на действие пользователя
+  // Если обычный компонент, просто предоставляет интерфейс для того чтобы навесить эвент листенеры
+  // То умный компоненнт, сам на себя навешивает обработчики.
+  // Умный абстрактный компонент позволяет простым компонентам (элемента?) Обновляться без сохранения данных.
+  // Такие параметны this._isDateShowing, не связаны как с бизнес логикой и данными.
+  // Как следствие, уместно навешивать эти обработчики внутри компонента. А не просто отдавать
+  // наружу комонента интерфейс.
   constructor(task) {
     super();
 
