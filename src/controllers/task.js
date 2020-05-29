@@ -1,7 +1,8 @@
 import TaskComponent from "../components/task.js";
 import TaskEditComponent from "../components/task-edit";
 import {render, replace, RenderPosition} from "../utils/render";
-
+// В этом файле описана реализация таск контроллера
+// Файл 1,а инстансов много. Это один из плюсов ООП.
 const Mode = {
   DEFAULT: `default`,
   EDIT: `edit`,
@@ -34,13 +35,14 @@ export default class TaskController {
     });
 
     this._taskComponent.setArchiveButtonClickHandler(() => {
-      this._onDataChange(this, task, Object.assign({}, task, {
+      // Object.assign - все свойства таска вписываем в таргет и свойства безымянного объетка (из архив) тоже вписываем в таргет. Получаем таск с обновленнным свойстовм.
+      this._onDataChange(task, Object.assign({}, task, {
         isArchive: !task.isArchive,
       }));
     });
 
     this._taskComponent.setFavoritesButtonClickHandler(() => {
-      this._onDataChange(this, task, Object.assign({}, task, {
+      this._onDataChange(task, Object.assign({}, task, {
         isFavorite: !task.isFavorite,
       }));
     });
